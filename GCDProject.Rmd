@@ -29,7 +29,7 @@ sapply(packages, require, character.only = TRUE)
 
 Unless this step had been performed earlier, the function getdata() was used to crete a directory to store the downloaded file, and the download performed. The linked file was a .zip file, whose contents are paths to .txt files in which the data are recorded. The enclosing directory for these files were automatically downloaded to the working directory. 
 
-```{r}
+```{r, cache=TRUE}
 getdata<-function(fileUrl, dir, filename, ext){
         # create directory, if it is not already present
         dirName<-paste(dir, sep = "")
@@ -95,7 +95,8 @@ unique(mergeddata$subjectID)
 ### 2. Extracting the required features
 
 ```{r}
-# select from merged data the first two columns, and any others that contain the phrases "mean" or "std" in isolation
+# select from merged data the first two columns, and any others that 
+# contain the phrases "mean" or "std" in isolation
 extracteddata<-select(mergeddata, 
                       subjectID, 
                       activityNum, 
@@ -121,7 +122,7 @@ activity_names$activity<-gsub(pattern = "_",
 cleandata<-merge(y = extracteddata, 
                  x = activity_names, 
                  by = "activityNum")
-cleandata<-arrange(cleandata, subjectID)
+cleandata<-arrange(cleandata, subjectID, activityNum)
 ```
 
 ### 5. Obtaining the average of each variable for each activity and each subject
@@ -135,6 +136,8 @@ meltdata<-melt(cleandata, id=c("activity", "subjectID"))
 averaged_data<-dcast(data = meltdata, 
                      formula = subjectID+activity~variable, 
                      fun.aggregate = mean)
+#arrange the data by both subjectID and activityNum
+averaged_data<-arrange(averaged_data, subjectID, activityNum)
 # the column names of averaged_data need to be changed to reflect the fact that the data they contain are averaged values
 new_colNames<-paste("ave", colnames(averaged_data), sep=".")
 setnames(x = averaged_data, 
@@ -144,3 +147,12 @@ write.table(x = averaged_data,
             file = "./Fitness/averagedData.txt", 
             row.names = F)
 ```
+If the resulting table is examined with 
+```{r,results='hide'}
+data<-read.table(file = "./Fitness/averagedData.txt", header = T)
+View(data)
+```
+
+* each observation (subject) is in itss own row
+* each variable (activity:ave.fBodyBodyGyroJerkMag-std()) is in its own column
+* there is a single observation type, and so, a single table

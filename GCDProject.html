@@ -169,7 +169,8 @@ unique(mergeddata$subjectID)</code></pre>
 </div>
 <div id="extracting-the-required-features" class="section level3">
 <h3>2. Extracting the required features</h3>
-<pre class="r"><code># select from merged data the first two columns, and any others that contain the phrases &quot;mean&quot; or &quot;std&quot; in isolation
+<pre class="r"><code># select from merged data the first two columns, and any others that 
+# contain the phrases &quot;mean&quot; or &quot;std&quot; in isolation
 extracteddata&lt;-select(mergeddata, 
                       subjectID, 
                       activityNum, 
@@ -200,7 +201,7 @@ activity_names$activity&lt;-gsub(pattern = &quot;_&quot;,
 cleandata&lt;-merge(y = extracteddata, 
                  x = activity_names, 
                  by = &quot;activityNum&quot;)
-cleandata&lt;-arrange(cleandata, subjectID)</code></pre>
+cleandata&lt;-arrange(cleandata, subjectID, activityNum)</code></pre>
 </div>
 <div id="obtaining-the-average-of-each-variable-for-each-activity-and-each-subject" class="section level3">
 <h3>5. Obtaining the average of each variable for each activity and each subject</h3>
@@ -211,6 +212,8 @@ meltdata&lt;-melt(cleandata, id=c(&quot;activity&quot;, &quot;subjectID&quot;))
 averaged_data&lt;-dcast(data = meltdata, 
                      formula = subjectID+activity~variable, 
                      fun.aggregate = mean)
+#arrange the data by both subjectID and activityNum
+averaged_data&lt;-arrange(averaged_data, subjectID, activityNum)
 # the column names of averaged_data need to be changed to reflect the fact that the data they contain are averaged values
 new_colNames&lt;-paste(&quot;ave&quot;, colnames(averaged_data), sep=&quot;.&quot;)
 setnames(x = averaged_data, 
@@ -219,6 +222,14 @@ setnames(x = averaged_data,
 write.table(x = averaged_data, 
             file = &quot;./Fitness/averagedData.txt&quot;, 
             row.names = F)</code></pre>
+<p>If the resulting table is examined with</p>
+<pre class="r"><code>data&lt;-read.table(file = &quot;./Fitness/averagedData.txt&quot;, header = T)
+View(data)</code></pre>
+<ul>
+<li>each observation (subject) is in itss own row</li>
+<li>each variable (activity:ave.fBodyBodyGyroJerkMag-std()) is in its own column</li>
+<li>there is a single observation type, and so, a single table</li>
+</ul>
 </div>
 
 
