@@ -1,0 +1,102 @@
+---
+title: "CodeBook"
+author: "Varun Boodram"
+date: "October 21, 2014"
+output: html_document
+---
+
+## Background
+
+### Data acquistion
+
+The README of the original data details the collection of the data. In summary, 30 volunteers between the ages of 19 through 48 performed six activities while wearing a Samsung Galaxy S II smartphone on thier waists. For each subject, 561 individual measurements were captured with the smartphone's inbuilt accelerometer and gyroscope. 
+
+### Data Citation
+```
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto. 
+Smartlab - Non Linear Complex Systems Laboratory 
+DITEN - UniversitÃ  degli Studi di Genova, Genoa I-16145, Italy. 
+activityrecognition '@' smartlab.ws 
+www.smartlab.ws 
+```
+-------
+
+## Variable List
+
+### Case Identification 
+
+* subjectID: subject observation number (1-30)
+* activity: one of the six activites performed 
+
+        * Walking
+        * Walking upstairs
+        * Walking downstairs
+        * Sitting
+        * Standing
+        * Laying
+        
+* activityNum: numerical identifier for each activity (1-6)
+
+### Measures
+
+* Acceleration signals: measurements in standard gravity units 'g'
+
+        * "Averaged.Time.Body.Acceleration-mean()-X"    
+        * "Averaged.Time.Body.Acceleration-mean()-Y"                            
+        * "Averaged.Time.Body.Acceleration-mean()-Z"                            
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration-mean()-X" 
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration-mean()-Y"        
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration-mean()-Z"        
+        * "Averaged.Time.Body.Acceleration.Magnitude-mean()"                    
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration.Magnitude-mean()"
+        * "Averaged.Frequency.Body.Acceleration-mean()-X"                       
+        * "Averaged.Frequency.Body.Acceleration-mean()-Y"                       
+        * "Averaged.Frequency.Body.Acceleration-mean()-Z"                       
+        * "Averaged.Frequency.Body.Acceleration.Linear.Acceleration-mean()-X"   
+        * "Averaged.Frequency.Body.Acceleration.Linear.Acceleration-mean()-Y"   
+        * "Averaged.Frequency.Body.Acceleration.Linear.Acceleration-mean()-Z"   
+        * "Averaged.Frequency.Body.Acceleration.Magnitude-mean()"               
+        * "Averaged.Time.Body.Acceleration-std()-X"                             
+        * "Averaged.Time.Body.Acceleration-std()-Y"                             
+        * "Averaged.Time.Body.Acceleration-std()-Z"                             
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration-std()-X"         
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration-std()-Y"         
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration-std()-Z"         
+        * "Averaged.Time.Body.Acceleration.Magnitude-std()"                     
+        * "Averaged.Time.Body.Acceleration.Linear.Acceleration.Magnitude-std()" 
+        * "Averaged.Frequency.Body.Acceleration-std()-X"                        
+        * "Averaged.Frequency.Body.Acceleration-std()-Y"                        
+        * "Averaged.Frequency.Body.Acceleration-std()-Z"                        
+        * "Averaged.Frequency.Body.Acceleration.Linear.Acceleration-std()-X"    
+        * "Averaged.Frequency.Body.Acceleration.Linear.Acceleration-std()-Y"    
+        * "Averaged.Frequency.Body.Acceleration.Linear.Acceleration-std()-Z"    
+        * "Averaged.Frequency.Body.Acceleration.Magnitude-std()" 
+
+* Angular Velocity Signals: difference between total acceleration and g
+
+        * "Averaged.Time.Body.Angular.Velocity-mean()-X" 
+        * "Averaged.Time.Body.Angular.Velocity-mean()-Y"                                   
+        * "Averaged.Time.Body.Angular.Velocity-mean()-Z"                                   
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration-mean()-X"               
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration-mean()-Y"               
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration-mean()-Z"               
+        * "Averaged.Time.Body.Angular.Velocity.Magnitude-mean()"                           
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration.Magnitude-mean()"       
+        * "Averaged.Frequency.Body.Angular.Velocity-mean()-X"                              
+        * "Averaged.Frequency.Body.Angular.Velocity-mean()-Y"                              
+        * "Averaged.Frequency.Body.Angular.Velocity-mean()-Z"                              
+        * "Averaged.Frequency.Bodily.Angular.Velocity.Magnitude-mean()"                    
+        * "Averaged.Frequency.Bodily.Angular.Velocity.Linear.Acceleration.Magnitude-mean()"
+        * "Averaged.Time.Body.Angular.Velocity-std()-X"                                    
+        * "Averaged.Time.Body.Angular.Velocity-std()-Y"                                    
+        * "Averaged.Time.Body.Angular.Velocity-std()-Z"                                    
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration-std()-X"                
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration-std()-Y"                
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration-std()-Z"                
+        * "Averaged.Time.Body.Angular.Velocity.Magnitude-std()"                            
+        * "Averaged.Time.Body.Angular.Velocity.Linear.Acceleration.Magnitude-std()"      
+        * "Averaged.Frequency.Body.Angular.Velocity-std()-X"                               
+        * "Averaged.Frequency.Body.Angular.Velocity-std()-Y"                               
+        * "Averaged.Frequency.Body.Angular.Velocity-std()-Z"                               
+        * "Averaged.Frequency.Bodily.Angular.Velocity.Magnitude-std()"                     
+        * "Averaged.Frequency.Bodily.Angular.Velocity.Linear.Acceleration.Magnitude-std()" 
