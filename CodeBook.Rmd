@@ -1,8 +1,5 @@
 ---
 title: "CodeBook"
-author: "Varun Boodram"
-date: "October 21, 2014"
-output: html_document
 ---
 
 ## Background
